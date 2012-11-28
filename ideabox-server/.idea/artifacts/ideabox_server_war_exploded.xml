@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ideabox-server:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/ideabox_server_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="ideabox-server/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ideabox-server" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
