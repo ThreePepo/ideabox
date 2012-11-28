@@ -8,4 +8,5 @@ package com.taobao.ideabox.service;
  * To change this template use File | Settings | File Templates.
  */
 public interface BaseService {
+    public void test();
 }
