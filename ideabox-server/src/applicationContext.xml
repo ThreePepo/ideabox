@@ -24,5 +24,7 @@
     </bean>
     <!--dao-->
     <bean id="ideaDAO" class="com.taobao.ideabox.dao.impl.IdeaDAOImpl"/>
+    <bean id="userDAO" class="com.taobao.ideabox.dao.impl.UserDAOImpl"/>
+    <bean id="tagDAO" class="com.taobao.ideabox.dao.impl.TagDAOImpl"/>
     <!--service-->
 </beans>
