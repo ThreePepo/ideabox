@@ -12,7 +12,10 @@ import java.util.List;
  * User: shufj
  * Date: 11/29/12 8:51 обнГ
  */
-public class UserTagDAO implements BaseDAO<UserTagDO>{
+public class UserTagDAO extends BaseDAO{
+    public UserTagDAO(){
+      super("","");
+    }
 
     public boolean insert(UserTagDO userTagDO) {
         StringBuilder sb = new StringBuilder();

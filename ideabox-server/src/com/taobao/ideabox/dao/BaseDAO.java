@@ -3,12 +3,14 @@ package com.taobao.ideabox.dao;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.RowMapper;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,19 +18,20 @@ import java.sql.SQLException;
  * Date: 12-12-1
  * Time: 下午2:11
  */
-public class BaseDAO {
+public class BaseDAO <T>{
     @Resource
-    private JdbcTemplate jdbcTemplate;
+    protected JdbcTemplate jdbcTemplate;
 
     protected String tableName;
     protected String primaryKey;
+    protected RowMapper<T> rowMapper;
 
     protected BaseDAO(String tableName, String primaryKey){
         this.tableName = tableName;
         this.primaryKey = primaryKey;
     }
 
-    protected void delete(final int primaryKey){
+    public int delete(final int primaryKey){
         final String sql =
                 "delete from "+tableName+" where "+this.primaryKey+"=?";
 
@@ -37,7 +40,7 @@ public class BaseDAO {
            * update()在这里可用来进行表的更新操作，它有几个重载版本，如下使用的是一个使用
            * PreparedStatementCreator对象作为参数的方法
            * */
-        jdbcTemplate.update(new PreparedStatementCreator(){
+        return jdbcTemplate.update(new PreparedStatementCreator(){
             public PreparedStatement createPreparedStatement(Connection conn)
                     throws SQLException {
                 PreparedStatement ps = conn.prepareStatement(sql);
@@ -47,4 +50,27 @@ public class BaseDAO {
         });
     }
 
+    /**
+     * 公共查询方法，需指定参数
+     * @param condition
+     * @param page
+     * @param size
+     * @return
+     */
+    public  List<T> query(String condition, int page, int size) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(" select * from ").append(tableName).append(" ");
+        if (!"".endsWith(condition)) {
+            sb.append(condition);
+        }
+        if (size != 0) {
+            sb.append(" limit ").append((page-1) * size).append(",").append(size);
+        }
+        String sql = sb.toString();
+        return jdbcTemplate.query(sql,rowMapper);
+    }
+
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate){
+        this.jdbcTemplate = jdbcTemplate;
+    }
 }

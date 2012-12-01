@@ -12,7 +12,11 @@ import java.util.List;
  * User: shufj
  * Date: 11/29/12 8:51 обнГ
  */
-public class IdeaTagDAO implements BaseDAO<IdeaTagDO>{
+public class IdeaTagDAO extends BaseDAO{
+
+    public IdeaTagDAO(){
+        super("","");
+    }
 
     public boolean insert(IdeaTagDO ideaTagDO) {
         StringBuilder sb = new StringBuilder();

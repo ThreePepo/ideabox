@@ -13,8 +13,11 @@ import java.util.List;
  * User: shufj
  * Date: 11/29/12 8:51 обнГ
  */
-public class IdeaerDAO implements BaseDAO<IdeaerDO> {
+public class IdeaerDAO extends BaseDAO {
 
+    public IdeaerDAO(){
+        super("","");
+    }
     public boolean insert(IdeaerDO ideaerDO) {
         StringBuilder sb = new StringBuilder();
         sb.append("insert into ideaers (creator_id,idea_id, parter_id, description, status,gmt_create) values(");
