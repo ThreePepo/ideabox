@@ -1,19 +1,50 @@
 package com.taobao.ideabox.dao;
 
-import java.util.List;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+
+import javax.annotation.Resource;
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
- * User: shufj
- * Date: 11/29/12 7:54 下午
+ * Created with IntelliJ IDEA.
+ * User: Warren
+ * Date: 12-12-1
+ * Time: 下午2:11
  */
-public interface BaseDAO<BaseDO> {
+public class BaseDAO {
+    @Resource
+    private JdbcTemplate jdbcTemplate;
 
-    boolean insert(BaseDO baseDO);
+    protected String tableName;
+    protected String primaryKey;
 
-    boolean update(BaseDO baseDO);
+    protected BaseDAO(String tableName, String primaryKey){
+        this.tableName = tableName;
+        this.primaryKey = primaryKey;
+    }
 
-    boolean delete(BaseDO baseDO);
+    protected void delete(final int primaryKey){
+        final String sql =
+                "delete from "+tableName+" where "+this.primaryKey+"=?";
 
-    List<BaseDO> Query(String where, int page, int size, String order);
+        /*
+           * 使用我们所熟知的PrepardStatement来进行插入操作，不过使用方法进行了封装,
+           * update()在这里可用来进行表的更新操作，它有几个重载版本，如下使用的是一个使用
+           * PreparedStatementCreator对象作为参数的方法
+           * */
+        jdbcTemplate.update(new PreparedStatementCreator(){
+            public PreparedStatement createPreparedStatement(Connection conn)
+                    throws SQLException {
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ps.setInt(1, primaryKey);
+                return ps;
+            }
+        });
+    }
 
 }
