@@ -6,23 +6,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
     <!-- Scans within the base package of the application for @Components to configure as beans -->
-   <!-- 自动扫描的包名 -->
-    <context:component-scan base-package="com.taobao.ideabox" ></context:component-scan>
+
+    <!-- 自动扫描的包名 -->
+    <context:component-scan base-package="com.taobao.ideabox" />
 
     <!-- 默认的注解映射的支持 -->
     <mvc:annotation-driven />
-    <!--
-    <bean name="xmlViewResolver" class="org.springframework.web.servlet.view.XmlViewResolver">
-        <property name="location" value="/WEB-INF/spring/views.xml"></property>
-        <property name="order" value="1"></property>
-    </bean>
-    -->
-    <!-- 拦截器 -->
-    <!--
-    <mvc:interceptors>
-        <bean class="com.taobao.ideabox.MyInteceptor" />
-    </mvc:interceptors>
-    -->
+
     <!-- 对静态资源文件的访问  方案一 （二选一） -->
     <mvc:default-servlet-handler/>
 </beans>

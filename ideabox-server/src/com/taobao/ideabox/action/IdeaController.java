@@ -14,6 +14,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,11 +36,11 @@ public class IdeaController {
     @RequestMapping(value="/idea/query",method = RequestMethod.GET)
     @ResponseBody
     public void  queryIdeas(HttpServletRequest request, HttpServletResponse response, PrintWriter out)throws Exception{
-        List<IdeaDO> ideaList = ideaDAO.query("",0,20);
+       List<IdeaDO> ideaList = ideaDAO.query("",0,20);
         //以JSON方式输出查询数据
         JSONObject ideas = new JSONObject();
         JSONArray array = new JSONArray();
-        for(IdeaDO ideaDO: ideaList){
+        for(IdeaDO ideaDO:ideaList ){
             JSONObject idea = new JSONObject();
             idea.put("description", ideaDO.getDescription());
             idea.put("video",ideaDO.getVideo());

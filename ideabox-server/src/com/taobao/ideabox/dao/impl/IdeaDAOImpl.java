@@ -5,6 +5,8 @@ import com.taobao.ideabox.dao.IdeaDAO;
 import com.taobao.ideabox.entity.impl.IdeaDO;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,10 +17,11 @@ import java.sql.SQLException;
  * User: shufj
  * Date: 11/29/12 7:33 ÏÂÎç
  */
+@Repository("ideaDAO")
 public class IdeaDAOImpl  extends BaseDAO implements IdeaDAO {
 
     public IdeaDAOImpl(){
-        super("ideas","id");
+        super("ideas", "id");
         rowMapper = new  RowMapper<IdeaDO>() {
             public IdeaDO mapRow(ResultSet rs, int i) throws SQLException {
                 IdeaDO ideaDO = new IdeaDO();
