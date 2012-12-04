@@ -64,7 +64,7 @@ public class BaseDAO <T>{
             sb.append(condition);
         }
         if (size != 0) {
-            sb.append(" limit ").append((page-1) * size).append(",").append(size);
+            sb.append(" limit ").append(page * size).append(",").append(size);
         }
         String sql = sb.toString();
         return jdbcTemplate.query(sql,rowMapper);
