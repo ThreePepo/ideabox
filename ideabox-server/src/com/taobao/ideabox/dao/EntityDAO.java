@@ -17,4 +17,6 @@ public interface EntityDAO<T> {
 
     public List<T> query(String condition, int page, int size);
 
+    public T selectById(int id);
+
 }

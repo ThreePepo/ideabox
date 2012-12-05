@@ -18,7 +18,7 @@ import java.sql.SQLException;
  * Date: 11/29/12 7:33 обнГ
  */
 @Repository("ideaDAO")
-public class IdeaDAOImpl  extends BaseDAO implements IdeaDAO {
+public class IdeaDAOImpl  extends BaseDAO<IdeaDO> implements IdeaDAO {
 
     public IdeaDAOImpl(){
         super("ideas", "id");

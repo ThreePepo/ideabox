@@ -1,6 +1,7 @@
 package com.taobao.ideabox.dao.impl;
 
 import com.taobao.ideabox.dao.BaseDAO;
+import com.taobao.ideabox.dao.UserDAO;
 import com.taobao.ideabox.entity.impl.UserDO;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
@@ -14,7 +15,7 @@ import java.sql.SQLException;
  * User: shufj
  * Date: 11/29/12 8:50 обнГ
  */
-public class UserDAOImpl extends BaseDAO {
+public class UserDAOImpl extends BaseDAO<UserDO> implements UserDAO {
 
     public UserDAOImpl() {
         super("users", "id");

@@ -71,6 +71,16 @@ public class BaseDAO <T>{
         return jdbcTemplate.query(sql,rowMapper);
     }
 
+    public T selectById(int id){
+        StringBuilder sb = new StringBuilder();
+        sb.append(" select * from ").append(tableName).append(" id =").append(id);
+        List<T> list = jdbcTemplate.query(sb.toString(),rowMapper);
+        if(list == null || list.size() <= 0){
+            return null;
+        }
+        return list.get(0);
+    }
+
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
     }
