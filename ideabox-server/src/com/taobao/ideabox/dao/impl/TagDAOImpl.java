@@ -1,6 +1,7 @@
 package com.taobao.ideabox.dao.impl;
 
 import com.taobao.ideabox.dao.BaseDAO;
+import com.taobao.ideabox.dao.TagDAO;
 import com.taobao.ideabox.entity.impl.TagDO;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
@@ -14,7 +15,7 @@ import java.sql.SQLException;
  * User: shufj
  * Date: 11/29/12 8:51 обнГ
  */
-public class TagDAOImpl extends BaseDAO  {
+public class TagDAOImpl extends BaseDAO<TagDO> implements TagDAO {
     public TagDAOImpl(){
         super("tags", "id");
         rowMapper = new RowMapper<TagDO>() {
