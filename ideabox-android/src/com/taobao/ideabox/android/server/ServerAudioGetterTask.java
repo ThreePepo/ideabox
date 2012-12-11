@@ -19,7 +19,7 @@ import java.lang.ref.WeakReference;
  * User: Warren
  * Date: 12-12-4
  * Time: 下午2:13
- * 服务器端音频获取
+ * 服务器端音频获取， 将在Activity中调用
  */
 public class ServerAudioGetterTask {
     private static final int IO_BUFFER_SIZE= 4 * 1024;

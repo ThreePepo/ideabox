@@ -32,15 +32,16 @@ import java.util.Set;
  * 数据格式：JSON, 提供获取服务器数据的接口
  */
 public class ServerConnection {
-    static HttpClient httpClient = new DefaultHttpClient();
-
+    //服务器所有地址
+    static final String SERVER_ADDR="http://10.13.37.45:8080";
     /**
      * 从指定URL查询数据
      * @return
      */
      public static String query(String url){
+         HttpClient httpClient = new DefaultHttpClient();
          // HttpGet对象
-         HttpGet httpRequest = new HttpGet(url);
+         HttpGet httpRequest = new HttpGet(SERVER_ADDR+url);
          String strResult = "";
          try {
              // 获得HttpResponse对象
@@ -65,8 +66,9 @@ public class ServerConnection {
      * @throws IOException
      */
     public static String sendGet(String url) throws ClientProtocolException, IOException{
+        HttpClient httpClient = new DefaultHttpClient();
         String result = null;
-        HttpGet get = new HttpGet(url);
+        HttpGet get = new HttpGet(SERVER_ADDR+url);
         InputStream in = null;
         try {
             HttpResponse response = httpClient.execute(get);
@@ -104,7 +106,7 @@ public class ServerConnection {
         String result = null;
         HttpClient httpClient = new DefaultHttpClient();
 
-        HttpPost get = new HttpPost(url);
+        HttpPost get = new HttpPost(SERVER_ADDR+url);
 
         // 创建表单参数列表
         List<NameValuePair> qparams = new ArrayList<NameValuePair>();
@@ -151,7 +153,7 @@ public class ServerConnection {
      */
     public static String sendGet(String url, Map<String, String> params) throws ClientProtocolException, IOException {
         Set<String> keys = params.keySet();
-        StringBuilder urlBuilder = new StringBuilder(url + "?");
+        StringBuilder urlBuilder = new StringBuilder(SERVER_ADDR+url + "?");
         for (String key : keys) {
             urlBuilder.append(key).append("=").append(params.get(key)).append("&");
         }
@@ -167,7 +169,7 @@ public class ServerConnection {
         String boundary = "*****";
         try
         {
-            URL url =new URL(actionUrl);
+            URL url =new URL(SERVER_ADDR+actionUrl);
             HttpURLConnection con=(HttpURLConnection)url.openConnection();
             /* 允许Input、Output，不使用Cache */
             con.setDoInput(true);

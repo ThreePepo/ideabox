@@ -4,7 +4,6 @@ import com.taobao.ideabox.dao.IdeaDAO;
 import com.taobao.ideabox.entity.impl.IdeaDO;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.springframework.beans.MutablePropertyValues;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,7 +13,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -56,6 +54,7 @@ public class IdeaController {
     }
 
     @RequestMapping(value="/idea/add",method = RequestMethod.POST)
+
     public void add(){
 
     }

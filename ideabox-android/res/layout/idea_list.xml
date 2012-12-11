@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/userImage"  android:layout_margin="5dp"
+                android:contentDescription="@string/app_name"/>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/title" android:textSize="22dp" android:layout_margin="3dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/description" android:layout_gravity="center" android:textSize="13dp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:gravity="right">
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/audioImage" android:layout_margin="5dp" android:contentDescription="@string/app_name"
+                android:layout_gravity="right" android:maxHeight="24dp" android:maxWidth="24dp"
+                android:minHeight="12dp" android:minWidth="12dp" android:adjustViewBounds="true"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageDesc" android:layout_margin="5dp" android:contentDescription="@string/app_name"
+                android:layout_gravity="right" android:maxHeight="24dp" android:maxWidth="24dp"
+                android:minHeight="12dp" android:minWidth="12dp"  android:adjustViewBounds="true"/>
+    </LinearLayout>
+</LinearLayout>

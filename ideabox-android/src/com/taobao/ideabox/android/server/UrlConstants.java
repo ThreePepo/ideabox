@@ -8,4 +8,7 @@ package com.taobao.ideabox.android.server;
  * 服务器的请求地址列表
  */
 public interface UrlConstants {
+
+    //IDEA全量查询
+    public static final String QUERY_IDEAS = "/idea/query.html";
 }

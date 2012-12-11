@@ -20,6 +20,7 @@ import java.lang.ref.WeakReference;
  * User: Warren
  * Date: 12-12-4
  * Time: 上午10:23
+ * 在Activity中调用，如果缓存中得不到相应的图片则通过本类从服务器端获取图片。
  */
 public class ServerPictureGetterTask extends AsyncTask<String, Void, Bitmap> {
     private static final int IO_BUFFER_SIZE= 4 * 1024;
