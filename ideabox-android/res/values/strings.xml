@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ideabox-android</string>
+    <string name="save">save</string>
+    <string name="share">share</string>
 </resources>

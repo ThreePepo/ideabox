@@ -73,7 +73,7 @@ public class BaseDAO <T>{
 
     public T selectById(int id){
         StringBuilder sb = new StringBuilder();
-        sb.append(" select * from ").append(tableName).append(" id =").append(id);
+        sb.append(" select * from ").append(tableName).append(" where id =").append(id);
         List<T> list = jdbcTemplate.query(sb.toString(),rowMapper);
         if(list == null || list.size() <= 0){
             return null;

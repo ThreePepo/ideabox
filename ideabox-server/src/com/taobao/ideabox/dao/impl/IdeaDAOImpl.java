@@ -71,9 +71,15 @@ public class IdeaDAOImpl  extends BaseDAO<IdeaDO> implements IdeaDAO {
         };
     }
     public int insert(IdeaDO ideaDO) {
+        int id = 0;
         String sql = "insert into ideas(description,video,photo,clicks,user_id, status,gmt_create,gmt_modified) values(?,?,?,?,?,?,now(),now())";
         PreparedStatementCreator psc = createInsertIdeaPSCreator(sql, ideaDO);
-        return jdbcTemplate.update(psc);
+        int row = jdbcTemplate.update(psc);
+        if(row > 0){
+            String maxSql = "select max(id) from ideas";
+            id = jdbcTemplate.queryForInt(maxSql);
+        }
+        return id;
     }
 
     public int update(IdeaDO ideaDO) {
